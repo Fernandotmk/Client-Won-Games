@@ -1,0 +1,61 @@
+import styled, { css, DefaultTheme } from 'styled-components'
+import { ButtonProps } from '.'
+
+// Pick é um método do typescript que seleciona
+// um item e os campos dentro desse item
+// o hasIcon é uma propriedade apenas para o Wrapper
+type WrapperProps = { hasIcon: boolean } & Pick<
+  ButtonProps,
+  'size' | 'fullWidth'
+>
+
+const wrapperModifiers = {
+  small: (theme: DefaultTheme) => css`
+    height: 3rem;
+    font-size: ${theme.font.sizes.xsmall};
+  `,
+  medium: (theme: DefaultTheme) => css`
+    height: 4rem;
+    font-size: ${theme.font.sizes.small};
+    padding: ${theme.spacings.xxsmall} ${theme.spacings.medium};
+  `,
+  large: (theme: DefaultTheme) => css`
+    height: 5rem;
+    font-size: ${theme.font.sizes.medium};
+    padding: ${theme.spacings.xxsmall} ${theme.spacings.xlarge};
+  `,
+  fullWidth: () => css`
+    width: 100%;
+  `,
+  withIcon: (theme: DefaultTheme) => css`
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    svg {
+      width: 1.5rem;
+
+      // proximo span dentro do svg
+      & + span {
+        margin-left: ${theme.spacings.xxsmall};
+      }
+    }
+  `
+}
+
+export const Wrapper = styled.button<WrapperProps>`
+  ${({ theme, size, fullWidth, hasIcon }) => css`
+    background: linear-gradient(180deg, #ff5f5f 0%, #f062c0 50%);
+    color: ${theme.colors.white};
+    border: 0;
+    cursor: pointer;
+    border-radius: ${theme.border.radius};
+    padding: ${theme.spacings.xxsmall};
+
+    ${!!size && wrapperModifiers[size](theme)};
+
+    ${!!fullWidth && wrapperModifiers.fullWidth()};
+
+    ${!!hasIcon && wrapperModifiers.withIcon(theme)}
+  `}
+`

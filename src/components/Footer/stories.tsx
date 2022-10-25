@@ -6,9 +6,9 @@ export default {
   component: Footer
 } as ComponentMeta<typeof Footer>
 
-const Template: ComponentStory<typeof Footer> = (args) => (
+const Template: ComponentStory<typeof Footer> = () => (
   <div style={{ maxWidth: '130rem', margin: '0 auto' }}>
-    <Footer {...args} />
+    <Footer />
   </div>
 )
 

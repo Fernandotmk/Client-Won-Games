@@ -3,7 +3,7 @@ import Logo from 'components/Logo'
 import Heading from 'components/Heading'
 import Link from 'next/link'
 
-const Footer = ({ ...args }) => (
+const Footer = () => (
   <S.Wrapper>
     <Logo color="black" />
     <S.Content>

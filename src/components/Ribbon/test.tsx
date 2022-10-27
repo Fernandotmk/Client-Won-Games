@@ -10,11 +10,11 @@ describe('<Ribbon />', () => {
     // 2- seleconar o elemento a ser testado 'scren' (queries) - getByLabel...
     // 3- expect/assertion - comparação / análise (espero que renderize a logo branca)
 
-    renderWithTheme(<Ribbon>Best Seller</Ribbon>)
+    const { container } = renderWithTheme(<Ribbon>Best Seller</Ribbon>)
 
     expect(screen.getByText(/best seller/i)).toBeInTheDocument()
 
-    // expect(container.firstChild).toMatchSnapshot()
+    expect(container.firstChild).toMatchSnapshot()
   })
 
   it('should render with primary color', () => {

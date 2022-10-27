@@ -16,10 +16,27 @@ export default {
   }
 } as ComponentMeta<typeof Banner>
 
-const Template: ComponentStory<typeof Banner> = (args) => <Banner {...args} />
+const Template: ComponentStory<typeof Banner> = (args) => (
+  <div style={{ maxWidth: '104rem', margin: '0 auto' }}>
+    <Banner {...args} />
+  </div>
+)
 
 export const Basic = Template.bind({})
 Basic.args = {
   // aqui vai os argumentos de cada Component
   // exemplo: title: 'Teste',
+}
+
+const Ribbon: ComponentStory<typeof Banner> = (args) => (
+  <div style={{ maxWidth: '104rem', margin: '0 auto' }}>
+    <Banner {...args} />
+  </div>
+)
+
+export const WithRibbon = Ribbon.bind({})
+WithRibbon.args = {
+  ribbon: '20% OFF',
+  ribbonSize: 'normal',
+  ribbonColor: 'primary'
 }

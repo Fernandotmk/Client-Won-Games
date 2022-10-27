@@ -30,7 +30,7 @@ describe('<Highlight />', () => {
     ).toBeInTheDocument()
     expect(screen.getByRole('link', { name: /buy now/i })).toBeInTheDocument()
 
-    // expect(container.firstChild).toMatchSnapshot()
+    expect(container.firstChild).toMatchSnapshot()
   })
 
   it('should render background image', () => {

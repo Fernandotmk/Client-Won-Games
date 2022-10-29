@@ -6,10 +6,11 @@ export default {
   component: {{pascalCase name}}
 } as ComponentMeta<typeof {{pascalCase name}}>
 
-const Template: ComponentStory<typeof {{pascalCase name}}> = (args) => <{{pascalCase name}} {...args} />
+export const Template: ComponentStory<typeof {{pascalCase name}}> = (args) => <{{pascalCase name}} {...args} />
 
-export const Basic = Template.bind({})
-Basic.args = {
+// Caso precise clonar 
+// export const Basic = Template.bind({})
+// Basic.args = {
   // aqui vai os argumentos de cada Component
   // exemplo: title: 'Teste',
-}
+// }

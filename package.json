@@ -22,6 +22,7 @@
     "polished": "^4.2.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-slick": "^0.29.0",
     "styled-components": "^5.3.6",
     "styled-icons": "^10.46.0",
     "styled-media-query": "^2.1.2"
@@ -52,6 +53,7 @@
     "@types/jest": "^29.1.1",
     "@types/node": "18.7.23",
     "@types/react": "18.0.21",
+    "@types/react-slick": "^0.23.10",
     "@types/styled-components": "^5.1.26",
     "@typescript-eslint/eslint-plugin": "^5.38.1",
     "@typescript-eslint/parser": "^5.38.1",

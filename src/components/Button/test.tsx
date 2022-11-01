@@ -59,6 +59,14 @@ describe('<Button />', () => {
     expect(screen.getByTestId('icon')).toBeInTheDocument()
   })
 
+  it('should render a minimal version', () => {
+    renderWithTheme(
+      <Button icon={<AddShoppingCart data-testid="icon" />} minimal>
+        Buy Now
+      </Button>
+    )
+  })
+
   // testando os novos atributos
   it('should render Button as a link', () => {
     const { debug, container } = renderWithTheme(

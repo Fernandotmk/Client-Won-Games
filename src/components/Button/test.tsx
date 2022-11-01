@@ -65,6 +65,17 @@ describe('<Button />', () => {
         Buy Now
       </Button>
     )
+
+    expect(screen.getByRole('button', { name: /buy now/i })).toHaveStyle({
+      background: 'none',
+      color: '#F231A5'
+    })
+
+    expect(screen.getByRole('button', { name: /buy now/i })).toHaveStyleRule(
+      'background',
+      'none',
+      { modifier: ':hover' }
+    )
   })
 
   // testando os novos atributos

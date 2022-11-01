@@ -1,17 +1,11 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react'
 import Highlight from '.'
+import item from './mock'
 
 export default {
   title: 'Highlight',
   component: Highlight,
-  args: {
-    title: 'Read Dead its back',
-    subtitle: 'Come see Johns new adventures',
-    backgroundImage: '/img/red-dead-img.jpg',
-    buttonLabel: 'Buy now',
-    buttonLink: '/rdr2',
-    alignment: 'right'
-  }
+  args: { ...item }
 } as ComponentMeta<typeof Highlight>
 
 export const Template: ComponentStory<typeof Highlight> = (args) => (

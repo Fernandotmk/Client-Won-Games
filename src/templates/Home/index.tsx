@@ -20,7 +20,7 @@ export type HomeTemplateProps = {
   upcommingHighligth: HighlightProps
   upcommingMoreGames: GameCardProps[]
   freeGames: GameCardProps[]
-  freeHighligth: HighlightProps
+  freeHighlight: HighlightProps
 }
 
 const Home = ({
@@ -32,7 +32,7 @@ const Home = ({
   upcommingHighligth,
   upcommingMoreGames,
   freeGames,
-  freeHighligth
+  freeHighlight
 }: HomeTemplateProps) => (
   <section>
     <Container>
@@ -57,7 +57,7 @@ const Home = ({
         <Heading lineLeft lineColor="secondary">
           Most Popular
         </Heading>
-        <Highlight {...mostPopularHighlight} />
+        <Highlight {...mostPopularHighlight} alignment="right" />
         <GameCardSlider items={mostPopularGames} />
       </S.SectionMostPopular>
 
@@ -74,7 +74,7 @@ const Home = ({
         <Heading lineLeft lineColor="secondary">
           Free games
         </Heading>
-        <Highlight {...freeHighligth} />
+        <Highlight {...freeHighlight} />
         <GameCardSlider items={freeGames} />
       </S.SectionFreeGames>
     </Container>

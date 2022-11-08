@@ -5,7 +5,7 @@ import { darken } from 'polished'
 // Pick é um método do typescript que seleciona
 // um item e os campos dentro desse item
 // o hasIcon é uma propriedade apenas para o Wrapper
-type WrapperProps = { hasIcon: boolean } & Pick<
+export type WrapperProps = { hasIcon: boolean } & Pick<
   ButtonProps,
   'size' | 'fullWidth' | 'minimal'
 >

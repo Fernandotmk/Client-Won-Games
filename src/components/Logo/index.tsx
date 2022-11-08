@@ -5,10 +5,15 @@ export type LogoProps = {
   color?: 'white' | 'black'
   size?: 'normal' | 'large'
   hideOnMobile?: boolean
+  id?: string
 }
 
 // colocando propriedade padrao color white
 const Logo = ({
+  // criado a propridade id apenas para diferenciar
+  // quando é utilizada a logo varias vezes na mesma pagina
+  // assim evita erros de css
+  id = 'logo',
   color = 'white',
   size = 'normal',
   hideOnMobile = false
@@ -23,7 +28,7 @@ const Logo = ({
     >
       <path
         d="M.05 15.23.02 35.87a6 6 0 0 0 9.33 5l20.6-13.72 20.54 13.8a6 6 0 0 0 9.34-4.97l.04-20A11.81 11.81 0 0 0 44.75 4.62l-.87.25a50.87 50.87 0 0 1-29.36-.27A11.15 11.15 0 0 0 .05 15.23Z"
-        fill="url(#a)"
+        fill={`url(#paint_linear_${id})`}
       />
       <path
         d="m30.16 27.16-6.03-4.3a.5.5 0 0 0-.78.5l1.3 7.3 5.51-3.5Z"
@@ -74,7 +79,7 @@ const Logo = ({
       />
       <defs>
         <linearGradient
-          id="a"
+          id={`paint_linear_${id}`}
           x1="29.16"
           y1="-7.4"
           x2="30.15"

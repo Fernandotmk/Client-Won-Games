@@ -1,3 +1,5 @@
+import { HighlightProps } from '.'
+
 export default {
   title: 'Read Dead is back',
   subtitle: 'Come see Johns new adventures',
@@ -5,4 +7,4 @@ export default {
   buttonLabel: 'Buy now',
   buttonLink: '/rdr2',
   alignment: 'right'
-}
+} as HighlightProps

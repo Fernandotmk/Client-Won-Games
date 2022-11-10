@@ -1,6 +1,8 @@
 import Button from 'components/Button'
 import * as S from './styles'
 
+export type HighlightPosition = 'right' | 'left'
+
 export interface HighlightProps {
   title: string
   subtitle: string
@@ -8,7 +10,7 @@ export interface HighlightProps {
   buttonLink: string
   backgroundImage: string
   floatImage?: string
-  alignment?: 'right' | 'left'
+  alignment?: HighlightPosition
 }
 
 const Highlight = ({

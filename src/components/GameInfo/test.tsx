@@ -1,5 +1,4 @@
 import { screen } from '@testing-library/react'
-import { executionAsyncId } from 'async_hooks'
 import { renderWithTheme } from 'utils/tests/helpers'
 
 import GameInfo from '.'

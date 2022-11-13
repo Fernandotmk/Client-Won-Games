@@ -11,7 +11,7 @@ exports[`<Footer /> should render the heading 1`] = `
 .c5::after {
   position: absolute;
   left: 0;
-  bottom: -1rem;
+  bottom: -0.5rem;
   content: '';
   width: 5rem;
   border-bottom: 0.5rem solid #3CD3C1;

@@ -34,4 +34,19 @@ describe('<Wishlist />', () => {
 
     // expect(container.firstChild).toMatchSnapshot()
   })
+
+  it('should render empty when there are no games', () => {
+    renderWithTheme(
+      <Wishlist
+        recommendedGames={gamesMock}
+        recommendedHilight={highlightMock}
+      />
+    )
+
+    expect(screen.queryByText(/population zero/i)).not.toBeInTheDocument()
+
+    expect(
+      screen.getByRole('heading', { name: /your wishlist is empty/i })
+    ).toBeInTheDocument()
+  })
 })

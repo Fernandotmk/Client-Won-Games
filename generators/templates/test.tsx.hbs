@@ -1,4 +1,5 @@
-import { render, screen } from '@testing-library/react'
+import { screen } from '@testing-library/react'
+import { renderWithTheme } from 'utils/tests/helpers'
 
 import {{pascalCase name}} from '.'
 
@@ -10,7 +11,7 @@ describe('<{{pascalCase name}} />', () => {
     // 2- seleconar o elemento a ser testado 'scren' (queries) - getByLabel...
     // 3- expect/assertion - comparação / análise (espero que renderize a logo branca)
 
-    const { container } = render(<{{pascalCase name}} />)
+    const { container } = renderWithTheme(<{{pascalCase name}} />)
 
     expect(screen.getByRole('heading', { name: /{{pascalCase name}}/i })).toBeInTheDocument()
 

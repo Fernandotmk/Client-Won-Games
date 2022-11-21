@@ -6,9 +6,10 @@ import {
   ExitToApp,
   FormatListBulleted
 } from 'styled-icons/material-outlined'
+export type active = '/profile/me' | '/profile/cards' | '/profile/orders'
 
 export type ProfileMenuProps = {
-  activeLink?: '/profile/me' | '/profile/cards' | '/profile/orders'
+  activeLink?: active
 }
 
 const ProfileMenu = ({ activeLink }: ProfileMenuProps) => (

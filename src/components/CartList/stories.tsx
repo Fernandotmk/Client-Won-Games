@@ -23,6 +23,12 @@ export const Template: ComponentStory<typeof CartList> = (args) => (
   </div>
 )
 
+export const WithButton = Template.bind({})
+
+WithButton.args = {
+  hasButton: true
+}
+
 // Caso precise clonar
 // export const Basic = Template.bind({})
 // Basic.args = {

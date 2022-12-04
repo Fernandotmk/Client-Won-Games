@@ -16,10 +16,15 @@ describe('<CartList />', () => {
   })
 
   it('should render the button', () => {
-    const { container } = renderWithTheme(
-      <CartList items={mockItems} total="R$ 330,00" hasButton />
-    )
+    renderWithTheme(<CartList items={mockItems} total="R$ 330,00" hasButton />)
 
     expect(screen.getByText(/buy it now/i)).toBeInTheDocument()
+  })
+
+  it('should render the button', () => {
+    renderWithTheme(<CartList />)
+
+    expect(screen.getByText(/your cart is empty/i)).toBeInTheDocument()
+    expect(screen.queryByText(/total/i)).not.toBeInTheDocument()
   })
 })

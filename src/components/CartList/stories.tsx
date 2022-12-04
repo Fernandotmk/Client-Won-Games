@@ -6,10 +6,6 @@ import mockItems from './mock'
 export default {
   title: 'CartList',
   component: CartList,
-  args: {
-    items: mockItems,
-    total: 'R$ 330,00'
-  },
   parameters: {
     backgrounds: {
       default: 'won-dark'
@@ -23,11 +19,20 @@ export const Template: ComponentStory<typeof CartList> = (args) => (
   </div>
 )
 
+Template.args = {
+  items: mockItems,
+  total: 'R$ 330,00'
+}
+
 export const WithButton = Template.bind({})
 
 WithButton.args = {
-  hasButton: true
+  hasButton: true,
+  items: mockItems,
+  total: 'R$ 330,00'
 }
+
+export const Empty = Template.bind({})
 
 // Caso precise clonar
 // export const Basic = Template.bind({})

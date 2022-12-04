@@ -9,10 +9,6 @@ export default {
     backgrounds: {
       default: 'won-dark'
     }
-  },
-  args: {
-    items,
-    total: 'R$ 300,00'
   }
 } as ComponentMeta<typeof CartDropDown>
 
@@ -21,6 +17,12 @@ export const Template: ComponentStory<typeof CartDropDown> = (args) => (
     <CartDropDown {...args} />
   </div>
 )
+Template.args = {
+  items,
+  total: 'R$ 300,00'
+}
+
+export const WithoutArgs = Template.bind({})
 
 // Caso precise clonar
 // export const Basic = Template.bind({})

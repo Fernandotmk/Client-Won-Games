@@ -57,7 +57,7 @@ export interface QueryGames_games {
 }
 
 export interface QueryGames {
-  games: QueryGames_games | null;
+  games: QueryGames_games[];
 }
 
 export interface QueryGamesVariables {

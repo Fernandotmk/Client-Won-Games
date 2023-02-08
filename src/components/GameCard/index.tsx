@@ -11,7 +11,7 @@ import * as S from './styles'
 import formatPrice from 'utils/format-price'
 
 export type GameCardProps = {
-  slug: string
+  slug?: string
   title: string
   developer: string
   img: string
@@ -66,7 +66,12 @@ const GameCard = ({
         {!!promotionalPrice && (
           <S.Price isPromotional>{formatPrice(price)}</S.Price>
         )}
-        <S.Price>{formatPrice(promotionalPrice || price)}</S.Price>
+        {price == 0 ? (
+          <S.Price>Free</S.Price>
+        ) : (
+          <S.Price>{formatPrice(promotionalPrice || price)}</S.Price>
+        )}
+
         <Button icon={<AddShoppingCart />} size="small" />
       </S.BuyBox>
     </S.Content>

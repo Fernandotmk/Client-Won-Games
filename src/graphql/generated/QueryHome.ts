@@ -3,7 +3,7 @@
 // @generated
 // This file was automatically generated and should not be edited.
 
-import { ENUM_COMPONENTPAGERIBBON_COLOR, ENUM_COMPONENTPAGERIBBON_SIZE } from "./globalTypes";
+import { ENUM_COMPONENTPAGERIBBON_COLOR, ENUM_COMPONENTPAGERIBBON_SIZE, ENUM_COMPONENTPAGEHIGHLIGHT_ALIGMENT } from "./globalTypes";
 
 // ====================================================
 // GraphQL query operation: QueryHome
@@ -203,9 +203,266 @@ export interface QueryHome_freeGames {
   data: QueryHome_freeGames_data[];
 }
 
+export interface QueryHome_sections_data_attributes_newGames_highlight_background_data_attributes {
+  __typename: "UploadFile";
+  url: string;
+}
+
+export interface QueryHome_sections_data_attributes_newGames_highlight_background_data {
+  __typename: "UploadFileEntity";
+  attributes: QueryHome_sections_data_attributes_newGames_highlight_background_data_attributes | null;
+}
+
+export interface QueryHome_sections_data_attributes_newGames_highlight_background {
+  __typename: "UploadFileEntityResponse";
+  data: QueryHome_sections_data_attributes_newGames_highlight_background_data | null;
+}
+
+export interface QueryHome_sections_data_attributes_newGames_highlight_floatimage_data_attributes {
+  __typename: "UploadFile";
+  url: string;
+}
+
+export interface QueryHome_sections_data_attributes_newGames_highlight_floatimage_data {
+  __typename: "UploadFileEntity";
+  attributes: QueryHome_sections_data_attributes_newGames_highlight_floatimage_data_attributes | null;
+}
+
+export interface QueryHome_sections_data_attributes_newGames_highlight_floatimage {
+  __typename: "UploadFileEntityResponse";
+  data: QueryHome_sections_data_attributes_newGames_highlight_floatimage_data | null;
+}
+
+export interface QueryHome_sections_data_attributes_newGames_highlight {
+  __typename: "ComponentPageHighlight";
+  title: string;
+  subtitle: string;
+  background: QueryHome_sections_data_attributes_newGames_highlight_background;
+  floatimage: QueryHome_sections_data_attributes_newGames_highlight_floatimage | null;
+  buttonLabel: string;
+  buttonLink: string;
+  aligment: ENUM_COMPONENTPAGEHIGHLIGHT_ALIGMENT | null;
+}
+
+export interface QueryHome_sections_data_attributes_newGames {
+  __typename: "ComponentPageSection";
+  title: string | null;
+  highlight: QueryHome_sections_data_attributes_newGames_highlight | null;
+}
+
+export interface QueryHome_sections_data_attributes_popularGames_highlight_background_data_attributes {
+  __typename: "UploadFile";
+  url: string;
+}
+
+export interface QueryHome_sections_data_attributes_popularGames_highlight_background_data {
+  __typename: "UploadFileEntity";
+  attributes: QueryHome_sections_data_attributes_popularGames_highlight_background_data_attributes | null;
+}
+
+export interface QueryHome_sections_data_attributes_popularGames_highlight_background {
+  __typename: "UploadFileEntityResponse";
+  data: QueryHome_sections_data_attributes_popularGames_highlight_background_data | null;
+}
+
+export interface QueryHome_sections_data_attributes_popularGames_highlight_floatimage_data_attributes {
+  __typename: "UploadFile";
+  url: string;
+}
+
+export interface QueryHome_sections_data_attributes_popularGames_highlight_floatimage_data {
+  __typename: "UploadFileEntity";
+  attributes: QueryHome_sections_data_attributes_popularGames_highlight_floatimage_data_attributes | null;
+}
+
+export interface QueryHome_sections_data_attributes_popularGames_highlight_floatimage {
+  __typename: "UploadFileEntityResponse";
+  data: QueryHome_sections_data_attributes_popularGames_highlight_floatimage_data | null;
+}
+
+export interface QueryHome_sections_data_attributes_popularGames_highlight {
+  __typename: "ComponentPageHighlight";
+  title: string;
+  subtitle: string;
+  background: QueryHome_sections_data_attributes_popularGames_highlight_background;
+  floatimage: QueryHome_sections_data_attributes_popularGames_highlight_floatimage | null;
+  buttonLabel: string;
+  buttonLink: string;
+  aligment: ENUM_COMPONENTPAGEHIGHLIGHT_ALIGMENT | null;
+}
+
+export interface QueryHome_sections_data_attributes_popularGames_games_data_attributes_cover_data_attributes {
+  __typename: "UploadFile";
+  url: string;
+}
+
+export interface QueryHome_sections_data_attributes_popularGames_games_data_attributes_cover_data {
+  __typename: "UploadFileEntity";
+  attributes: QueryHome_sections_data_attributes_popularGames_games_data_attributes_cover_data_attributes | null;
+}
+
+export interface QueryHome_sections_data_attributes_popularGames_games_data_attributes_cover {
+  __typename: "UploadFileEntityResponse";
+  data: QueryHome_sections_data_attributes_popularGames_games_data_attributes_cover_data | null;
+}
+
+export interface QueryHome_sections_data_attributes_popularGames_games_data_attributes_developers_data_attributes {
+  __typename: "Developer";
+  name: string;
+}
+
+export interface QueryHome_sections_data_attributes_popularGames_games_data_attributes_developers_data {
+  __typename: "DeveloperEntity";
+  attributes: QueryHome_sections_data_attributes_popularGames_games_data_attributes_developers_data_attributes | null;
+}
+
+export interface QueryHome_sections_data_attributes_popularGames_games_data_attributes_developers {
+  __typename: "DeveloperRelationResponseCollection";
+  data: QueryHome_sections_data_attributes_popularGames_games_data_attributes_developers_data[];
+}
+
+export interface QueryHome_sections_data_attributes_popularGames_games_data_attributes {
+  __typename: "Game";
+  name: string;
+  slug: string;
+  cover: QueryHome_sections_data_attributes_popularGames_games_data_attributes_cover | null;
+  developers: QueryHome_sections_data_attributes_popularGames_games_data_attributes_developers | null;
+  price: number;
+}
+
+export interface QueryHome_sections_data_attributes_popularGames_games_data {
+  __typename: "GameEntity";
+  attributes: QueryHome_sections_data_attributes_popularGames_games_data_attributes | null;
+}
+
+export interface QueryHome_sections_data_attributes_popularGames_games {
+  __typename: "GameRelationResponseCollection";
+  data: QueryHome_sections_data_attributes_popularGames_games_data[];
+}
+
+export interface QueryHome_sections_data_attributes_popularGames {
+  __typename: "ComponentPagePopularGames";
+  title: string;
+  highlight: QueryHome_sections_data_attributes_popularGames_highlight | null;
+  games: QueryHome_sections_data_attributes_popularGames_games | null;
+}
+
+export interface QueryHome_sections_data_attributes_upcomingGames_highlight_background_data_attributes {
+  __typename: "UploadFile";
+  url: string;
+}
+
+export interface QueryHome_sections_data_attributes_upcomingGames_highlight_background_data {
+  __typename: "UploadFileEntity";
+  attributes: QueryHome_sections_data_attributes_upcomingGames_highlight_background_data_attributes | null;
+}
+
+export interface QueryHome_sections_data_attributes_upcomingGames_highlight_background {
+  __typename: "UploadFileEntityResponse";
+  data: QueryHome_sections_data_attributes_upcomingGames_highlight_background_data | null;
+}
+
+export interface QueryHome_sections_data_attributes_upcomingGames_highlight_floatimage_data_attributes {
+  __typename: "UploadFile";
+  url: string;
+}
+
+export interface QueryHome_sections_data_attributes_upcomingGames_highlight_floatimage_data {
+  __typename: "UploadFileEntity";
+  attributes: QueryHome_sections_data_attributes_upcomingGames_highlight_floatimage_data_attributes | null;
+}
+
+export interface QueryHome_sections_data_attributes_upcomingGames_highlight_floatimage {
+  __typename: "UploadFileEntityResponse";
+  data: QueryHome_sections_data_attributes_upcomingGames_highlight_floatimage_data | null;
+}
+
+export interface QueryHome_sections_data_attributes_upcomingGames_highlight {
+  __typename: "ComponentPageHighlight";
+  title: string;
+  subtitle: string;
+  background: QueryHome_sections_data_attributes_upcomingGames_highlight_background;
+  floatimage: QueryHome_sections_data_attributes_upcomingGames_highlight_floatimage | null;
+  buttonLabel: string;
+  buttonLink: string;
+  aligment: ENUM_COMPONENTPAGEHIGHLIGHT_ALIGMENT | null;
+}
+
+export interface QueryHome_sections_data_attributes_upcomingGames {
+  __typename: "ComponentPageSection";
+  title: string | null;
+  highlight: QueryHome_sections_data_attributes_upcomingGames_highlight | null;
+}
+
+export interface QueryHome_sections_data_attributes_freeGames_highlight_background_data_attributes {
+  __typename: "UploadFile";
+  url: string;
+}
+
+export interface QueryHome_sections_data_attributes_freeGames_highlight_background_data {
+  __typename: "UploadFileEntity";
+  attributes: QueryHome_sections_data_attributes_freeGames_highlight_background_data_attributes | null;
+}
+
+export interface QueryHome_sections_data_attributes_freeGames_highlight_background {
+  __typename: "UploadFileEntityResponse";
+  data: QueryHome_sections_data_attributes_freeGames_highlight_background_data | null;
+}
+
+export interface QueryHome_sections_data_attributes_freeGames_highlight_floatimage_data_attributes {
+  __typename: "UploadFile";
+  url: string;
+}
+
+export interface QueryHome_sections_data_attributes_freeGames_highlight_floatimage_data {
+  __typename: "UploadFileEntity";
+  attributes: QueryHome_sections_data_attributes_freeGames_highlight_floatimage_data_attributes | null;
+}
+
+export interface QueryHome_sections_data_attributes_freeGames_highlight_floatimage {
+  __typename: "UploadFileEntityResponse";
+  data: QueryHome_sections_data_attributes_freeGames_highlight_floatimage_data | null;
+}
+
+export interface QueryHome_sections_data_attributes_freeGames_highlight {
+  __typename: "ComponentPageHighlight";
+  title: string;
+  subtitle: string;
+  background: QueryHome_sections_data_attributes_freeGames_highlight_background;
+  floatimage: QueryHome_sections_data_attributes_freeGames_highlight_floatimage | null;
+  buttonLabel: string;
+  buttonLink: string;
+  aligment: ENUM_COMPONENTPAGEHIGHLIGHT_ALIGMENT | null;
+}
+
+export interface QueryHome_sections_data_attributes_freeGames {
+  __typename: "ComponentPageSection";
+  title: string | null;
+  highlight: QueryHome_sections_data_attributes_freeGames_highlight | null;
+}
+
+export interface QueryHome_sections_data_attributes {
+  __typename: "Home";
+  newGames: QueryHome_sections_data_attributes_newGames | null;
+  popularGames: QueryHome_sections_data_attributes_popularGames | null;
+  upcomingGames: QueryHome_sections_data_attributes_upcomingGames | null;
+  freeGames: QueryHome_sections_data_attributes_freeGames | null;
+}
+
+export interface QueryHome_sections_data {
+  __typename: "HomeEntity";
+  attributes: QueryHome_sections_data_attributes | null;
+}
+
+export interface QueryHome_sections {
+  __typename: "HomeEntityResponse";
+  data: QueryHome_sections_data | null;
+}
+
 export interface QueryHome {
   banners: QueryHome_banners | null;
   newGames: QueryHome_newGames | null;
   upcomingGames: QueryHome_upcomingGames | null;
   freeGames: QueryHome_freeGames | null;
+  sections: QueryHome_sections | null;
 }

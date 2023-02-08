@@ -17,7 +17,6 @@ const props = {
   mostPopularGames: gamesMock,
   upcommingGames: gamesMock,
   upcommingHighligth: highlightMock,
-  upcommingMoreGames: gamesMock,
   freeGames: gamesMock,
   freeHighligth: highlightMock
 }
@@ -45,6 +44,6 @@ describe('<Home />', () => {
     renderWithTheme(<Home {...props} />)
 
     expect(screen.getByTestId('Mock BannerSlider')).toBeInTheDocument()
-    expect(screen.getAllByTestId('Mock Showcase')).toHaveLength(5)
+    expect(screen.getAllByTestId('Mock Showcase')).toHaveLength(4)
   })
 })

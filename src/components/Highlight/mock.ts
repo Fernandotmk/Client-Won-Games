@@ -6,5 +6,6 @@ export default {
   backgroundImage: '/img/red-dead-img.jpg',
   buttonLabel: 'Buy now',
   buttonLink: '/rdr2',
+  floatImage: '/img/red-dead-float.png',
   alignment: 'right'
 } as HighlightProps

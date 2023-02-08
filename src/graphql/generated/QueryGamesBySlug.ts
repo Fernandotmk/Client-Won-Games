@@ -9,6 +9,36 @@ import { ENUM_GAME_RATING } from "./globalTypes";
 // GraphQL query operation: QueryGamesBySlug
 // ====================================================
 
+export interface QueryGamesBySlug_games_data_attributes_platforms_data_attributes {
+  __typename: "Platform";
+  name: string;
+}
+
+export interface QueryGamesBySlug_games_data_attributes_platforms_data {
+  __typename: "PlatformEntity";
+  attributes: QueryGamesBySlug_games_data_attributes_platforms_data_attributes | null;
+}
+
+export interface QueryGamesBySlug_games_data_attributes_platforms {
+  __typename: "PlatformRelationResponseCollection";
+  data: QueryGamesBySlug_games_data_attributes_platforms_data[];
+}
+
+export interface QueryGamesBySlug_games_data_attributes_categories_data_attributes {
+  __typename: "Category";
+  name: string;
+}
+
+export interface QueryGamesBySlug_games_data_attributes_categories_data {
+  __typename: "CategoryEntity";
+  attributes: QueryGamesBySlug_games_data_attributes_categories_data_attributes | null;
+}
+
+export interface QueryGamesBySlug_games_data_attributes_categories {
+  __typename: "CategoryRelationResponseCollection";
+  data: QueryGamesBySlug_games_data_attributes_categories_data[];
+}
+
 export interface QueryGamesBySlug_games_data_attributes_gallery_data_attributes {
   __typename: "UploadFile";
   src: string;
@@ -70,38 +100,7 @@ export interface QueryGamesBySlug_games_data_attributes_publisher {
   data: QueryGamesBySlug_games_data_attributes_publisher_data | null;
 }
 
-export interface QueryGamesBySlug_games_data_attributes_categories_data_attributes {
-  __typename: "Category";
-  name: string;
-}
-
-export interface QueryGamesBySlug_games_data_attributes_categories_data {
-  __typename: "CategoryEntity";
-  attributes: QueryGamesBySlug_games_data_attributes_categories_data_attributes | null;
-}
-
-export interface QueryGamesBySlug_games_data_attributes_categories {
-  __typename: "CategoryRelationResponseCollection";
-  data: QueryGamesBySlug_games_data_attributes_categories_data[];
-}
-
-export interface QueryGamesBySlug_games_data_attributes_platforms_data_attributes {
-  __typename: "Platform";
-  name: string;
-}
-
-export interface QueryGamesBySlug_games_data_attributes_platforms_data {
-  __typename: "PlatformEntity";
-  attributes: QueryGamesBySlug_games_data_attributes_platforms_data_attributes | null;
-}
-
-export interface QueryGamesBySlug_games_data_attributes_platforms {
-  __typename: "PlatformRelationResponseCollection";
-  data: QueryGamesBySlug_games_data_attributes_platforms_data[];
-}
-
 export interface QueryGamesBySlug_games_data_attributes {
-  attributes: any;
   __typename: "Game";
   name: string;
   short_description: string;
@@ -109,17 +108,16 @@ export interface QueryGamesBySlug_games_data_attributes {
   price: number;
   rating: ENUM_GAME_RATING | null;
   release_date: any | null;
+  platforms: QueryGamesBySlug_games_data_attributes_platforms | null;
+  categories: QueryGamesBySlug_games_data_attributes_categories | null;
   gallery: QueryGamesBySlug_games_data_attributes_gallery | null;
   cover: QueryGamesBySlug_games_data_attributes_cover | null;
   developers: QueryGamesBySlug_games_data_attributes_developers | null;
   publisher: QueryGamesBySlug_games_data_attributes_publisher | null;
-  categories: QueryGamesBySlug_games_data_attributes_categories | null;
-  platforms: QueryGamesBySlug_games_data_attributes_platforms | null;
 }
 
 export interface QueryGamesBySlug_games_data {
   __typename: "GameEntity";
-  id: string | null;
   attributes: QueryGamesBySlug_games_data_attributes | null;
 }
 

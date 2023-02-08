@@ -5,7 +5,7 @@ import { GetStaticProps } from 'next'
 import Game, { GameTemplateProps } from 'templates/Game'
 
 import { QueryGames, QueryGamesVariables } from 'graphql/generated/QueryGames'
-import { QUERY_GAMES, QUERY_GAME_BY_SLUG } from 'graphql/games'
+import { QUERY_GAMES, QUERY_GAME_BY_SLUG } from 'graphql/queries/games'
 import {
   QueryGamesBySlug,
   QueryGamesBySlugVariables

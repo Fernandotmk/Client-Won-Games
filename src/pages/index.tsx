@@ -20,29 +20,26 @@ export async function getStaticProps() {
     variables: { date: TODAY }
   })
 
+  const popular = sections?.data?.attributes?.popularGames
+  const upcoming = sections?.data?.attributes?.upcomingGames
+  const free = sections?.data?.attributes?.freeGames
+  const news = sections?.data?.attributes?.newGames
+
   return {
     props: {
       revalidate: 10,
       banners: bannerMapper(banners),
-      newGamesTitle: sections?.data?.attributes?.newGames?.title,
+      newGamesTitle: news?.title,
       newGames: gamesMapper(newGames),
-      mostPopularHighlight: highlightMapper(
-        sections?.data?.attributes?.popularGames?.highlight
-      ),
-      mostPopularGamesTitle: sections?.data?.attributes?.popularGames?.title,
-      mostPopularGames: gamesMapper(
-        sections?.data?.attributes?.popularGames?.games
-      ),
-      upcomingGamesTitle: sections?.data?.attributes?.upcomingGames?.title,
+      mostPopularHighlight: highlightMapper(popular?.highlight),
+      mostPopularGamesTitle: popular?.title,
+      mostPopularGames: gamesMapper(popular?.games),
+      upcomingGamesTitle: upcoming?.title,
       upcommingGames: gamesMapper(upcomingGames),
-      upcommingHighligth: highlightMapper(
-        sections?.data?.attributes?.upcomingGames?.highlight
-      ),
-      freeGamesTitle: sections?.data?.attributes?.freeGames?.title,
+      upcommingHighligth: highlightMapper(upcoming?.highlight),
+      freeGamesTitle: free?.title,
       freeGames: gamesMapper(freeGames),
-      freeHighligth: highlightMapper(
-        sections?.data?.attributes?.freeGames?.highlight
-      )
+      freeHighligth: highlightMapper(free?.highlight)
     }
   }
 }

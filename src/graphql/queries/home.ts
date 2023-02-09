@@ -4,7 +4,7 @@ import { GameFragment } from 'graphql/fragments/game'
 import { HighlightFragment } from 'graphql/fragments/highlight'
 
 export const QUERY_HOME = gql`
-  query QueryHome {
+  query QueryHome($date: Date!) {
     banners {
       data {
         attributes {
@@ -14,7 +14,7 @@ export const QUERY_HOME = gql`
     }
 
     newGames: games(
-      filters: { release_date: { lte: "2021-01-27" } }
+      filters: { release_date: { lte: $date } }
       sort: "release_date:desc"
       pagination: { limit: 8 }
     ) {
@@ -26,7 +26,7 @@ export const QUERY_HOME = gql`
     }
 
     upcomingGames: games(
-      filters: { release_date: { gt: "2022-02-07" } }
+      filters: { release_date: { gt: $date } }
       sort: "release_date:asc"
       pagination: { limit: 8 }
     ) {

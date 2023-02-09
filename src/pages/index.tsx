@@ -1,8 +1,8 @@
 import Home, { HomeTemplateProps } from 'templates/Home'
-import highlightMock from 'components/Highlight/mock'
 import { initializeApollo } from 'utils/apollo'
 import { QUERY_HOME } from 'graphql/queries/home'
-import { QueryHome } from 'graphql/generated/QueryHome'
+import { QueryHome, QueryHomeVariables } from 'graphql/generated/QueryHome'
+import { bannerMapper, gamesMapper, highlightMapper } from 'utils/mappers'
 
 export default function Index(props: HomeTemplateProps) {
   // if (props.data) return <p>{JSON.stringify(props.data, null, 2)}</p>
@@ -11,75 +11,38 @@ export default function Index(props: HomeTemplateProps) {
 
 export async function getStaticProps() {
   const apolloClient = initializeApollo()
+  const TODAY = new Date().toISOString().slice(0, 10)
 
   const {
     data: { banners, newGames, upcomingGames, freeGames, sections }
-  } = await apolloClient.query<QueryHome>({ query: QUERY_HOME })
+  } = await apolloClient.query<QueryHome, QueryHomeVariables>({
+    query: QUERY_HOME,
+    variables: { date: TODAY }
+  })
 
   return {
     props: {
       revalidate: 10,
-      banners: banners?.data.map((banner) => ({
-        img: `http://localhost:1337${banner.attributes?.image.data?.attributes?.url}`,
-        title: banner.attributes?.title,
-        subtitle: banner.attributes?.subtitle,
-
-        ...(banner.attributes?.button && {
-          buttonLabel: banner.attributes.button.label,
-          buttonLink: banner.attributes.button.link
-        }),
-
-        ...(banner.attributes?.ribbon && {
-          ribbon: banner.attributes.ribbon.text,
-          ribbonColor: banner.attributes.ribbon.color,
-          ribbonSize: banner.attributes.ribbon.size
-        })
-
-        // Poderia ser utilizando || null no final
-        // buttonLabel: banner.attributes?.button?.label || null,
-        // buttonLink: banner.attributes?.button?.link || null,
-        // ribbon: banner.attributes?.ribbon?.text || null,
-        // ribbonColor: banner.attributes?.ribbon?.color || null,
-        // ribbonSize: banner.attributes?.ribbon?.size || null
-      })),
+      banners: bannerMapper(banners),
       newGamesTitle: sections?.data?.attributes?.newGames?.title,
-      newGames: newGames?.data.map((game) => ({
-        title: game.attributes?.name,
-        slug: game.attributes?.slug,
-        // poderia fazer um map mas como só tem um
-        // pegamos o primeiro[0]
-        developer: game.attributes?.developers?.data[0].attributes?.name,
-        img: `http://localhost:1337${game.attributes?.cover?.data?.attributes?.url}`,
-        price: game.attributes?.price
-      })),
-      mostPopularHighlight: highlightMock,
+      newGames: gamesMapper(newGames),
+      mostPopularHighlight: highlightMapper(
+        sections?.data?.attributes?.popularGames?.highlight
+      ),
       mostPopularGamesTitle: sections?.data?.attributes?.popularGames?.title,
-      mostPopularGames:
-        sections?.data?.attributes?.popularGames?.games?.data.map((game) => ({
-          title: game.attributes?.name,
-          slug: game.attributes?.slug,
-          developer: game.attributes?.developers?.data[0].attributes?.name,
-          img: `http://localhost:1337${game.attributes?.cover?.data?.attributes?.url}`,
-          price: game.attributes?.price
-        })),
+      mostPopularGames: gamesMapper(
+        sections?.data?.attributes?.popularGames?.games
+      ),
       upcomingGamesTitle: sections?.data?.attributes?.upcomingGames?.title,
-      upcommingGames: upcomingGames?.data.map((game) => ({
-        title: game.attributes?.name,
-        slug: game.attributes?.slug,
-        developer: game.attributes?.developers?.data[0].attributes?.name,
-        img: `http://localhost:1337${game.attributes?.cover?.data?.attributes?.url}`,
-        price: game.attributes?.price
-      })),
-      upcommingHighligth: highlightMock,
+      upcommingGames: gamesMapper(upcomingGames),
+      upcommingHighligth: highlightMapper(
+        sections?.data?.attributes?.upcomingGames?.highlight
+      ),
       freeGamesTitle: sections?.data?.attributes?.freeGames?.title,
-      freeGames: freeGames?.data.map((game) => ({
-        title: game.attributes?.name,
-        slug: game.attributes?.slug,
-        developer: game.attributes?.developers?.data[0].attributes?.name,
-        img: `http://localhost:1337${game.attributes?.cover?.data?.attributes?.url}`,
-        price: game.attributes?.price
-      })),
-      freeHighligth: highlightMock
+      freeGames: gamesMapper(freeGames),
+      freeHighligth: highlightMapper(
+        sections?.data?.attributes?.freeGames?.highlight
+      )
     }
   }
 }

@@ -13,14 +13,17 @@ export const QUERY_RECOMMENDED = gql`
               ...HighlightFragment
             }
             games {
-              ...GameFragment
+              data {
+                attributes {
+                  ...GameFragment
+                }
+              }
             }
           }
         }
       }
     }
   }
-
-  ${GameFragment}
   ${HighlightFragment}
+  ${GameFragment}
 `

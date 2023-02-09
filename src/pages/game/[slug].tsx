@@ -11,8 +11,6 @@ import {
   QueryGamesBySlugVariables
 } from 'graphql/generated/QueryGamesBySlug'
 
-import gamesMock from 'components/GameCardSlider/mock'
-import highlightMock from 'components/Highlight/mock'
 import { gamesMapper, highlightMapper } from 'utils/mappers'
 import { QUERY_RECOMMENDED } from 'graphql/queries/recommended'
 import { QueryRecommended } from 'graphql/generated/QueryRecommended'
@@ -82,6 +80,8 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     variables: { date: TODAY }
   })
 
+  const up = upcoming.showcase?.data?.attributes?.upcomingGames
+
   return {
     props: {
       revalidate: 60,
@@ -108,11 +108,9 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
           (category) => category.attributes!.name
         )
       },
-      upcomingTitle: upcoming.showcase?.data?.attributes?.upcomingGames?.title,
+      upcomingTitle: up?.title,
       upcomingGames: gamesMapper(upcoming.upcomingGames),
-      upcomingHighlight: highlightMapper(
-        upcoming.showcase?.data?.attributes?.upcomingGames?.highlight
-      ),
+      upcomingHighlight: highlightMapper(up?.highlight),
       recommendedTitle: recommended?.title,
       recommendedGames: gamesMapper(recommended?.games)
     }

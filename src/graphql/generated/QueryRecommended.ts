@@ -50,8 +50,53 @@ export interface QueryRecommended_recommended_data_attributes_section_highlight 
   aligment: ENUM_COMPONENTPAGEHIGHLIGHT_ALIGMENT | null;
 }
 
+export interface QueryRecommended_recommended_data_attributes_section_games_data_attributes_cover_data_attributes {
+  __typename: "UploadFile";
+  url: string;
+}
+
+export interface QueryRecommended_recommended_data_attributes_section_games_data_attributes_cover_data {
+  __typename: "UploadFileEntity";
+  attributes: QueryRecommended_recommended_data_attributes_section_games_data_attributes_cover_data_attributes | null;
+}
+
+export interface QueryRecommended_recommended_data_attributes_section_games_data_attributes_cover {
+  __typename: "UploadFileEntityResponse";
+  data: QueryRecommended_recommended_data_attributes_section_games_data_attributes_cover_data | null;
+}
+
+export interface QueryRecommended_recommended_data_attributes_section_games_data_attributes_developers_data_attributes {
+  __typename: "Developer";
+  name: string;
+}
+
+export interface QueryRecommended_recommended_data_attributes_section_games_data_attributes_developers_data {
+  __typename: "DeveloperEntity";
+  attributes: QueryRecommended_recommended_data_attributes_section_games_data_attributes_developers_data_attributes | null;
+}
+
+export interface QueryRecommended_recommended_data_attributes_section_games_data_attributes_developers {
+  __typename: "DeveloperRelationResponseCollection";
+  data: QueryRecommended_recommended_data_attributes_section_games_data_attributes_developers_data[];
+}
+
+export interface QueryRecommended_recommended_data_attributes_section_games_data_attributes {
+  __typename: "Game";
+  name: string;
+  slug: string;
+  cover: QueryRecommended_recommended_data_attributes_section_games_data_attributes_cover | null;
+  developers: QueryRecommended_recommended_data_attributes_section_games_data_attributes_developers | null;
+  price: number;
+}
+
+export interface QueryRecommended_recommended_data_attributes_section_games_data {
+  __typename: "GameEntity";
+  attributes: QueryRecommended_recommended_data_attributes_section_games_data_attributes | null;
+}
+
 export interface QueryRecommended_recommended_data_attributes_section_games {
   __typename: "GameRelationResponseCollection";
+  data: QueryRecommended_recommended_data_attributes_section_games_data[];
 }
 
 export interface QueryRecommended_recommended_data_attributes_section {

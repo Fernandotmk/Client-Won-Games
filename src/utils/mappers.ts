@@ -51,7 +51,6 @@ export const gamesMapper = (
 export const highlightMapper = (
   highlight:
     | QueryHome_sections_data_attributes_freeGames_highlight
-    | any
     | null
     | undefined
 ) => {

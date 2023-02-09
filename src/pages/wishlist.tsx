@@ -1,6 +1,5 @@
 import Wishlist, { WishlistTemplateProps } from 'templates/Wishlist'
 
-import highlight from 'components/Highlight/mock'
 import gamesMock from 'components/GameCardSlider/mock'
 import { initializeApollo } from 'utils/apollo'
 import { QueryRecommended } from 'graphql/generated/QueryRecommended'
@@ -17,14 +16,15 @@ export async function getStaticProps() {
   const { data } = await apolloClient.query<QueryRecommended>({
     query: QUERY_RECOMMENDED
   })
+
+  const recommended = data.recommended?.data?.attributes?.section
+
   return {
     props: {
       games: gamesMock,
-      recommendedTitle: data.recommended?.data?.attributes?.section.title,
-      recommendedGames: gamesMapper(
-        data.recommended?.data?.attributes?.section.games
-      ),
-      recommendedHighlight: highlight
+      recommendedTitle: recommended?.title,
+      recommendedGames: gamesMapper(recommended?.games),
+      recommendedHighlight: highlightMapper(recommended?.highlight)
     }
   }
 }

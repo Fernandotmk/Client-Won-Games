@@ -8,6 +8,7 @@ import * as S from './styles'
 import { useQuery } from '@apollo/client'
 import { QueryGames, QueryGamesVariables } from 'graphql/generated/QueryGames'
 import { QUERY_GAMES } from 'graphql/queries/games'
+import Loading from 'components/Loading'
 
 export type GamesTemplateProps = {
   games?: GameCardProps[]
@@ -39,7 +40,7 @@ const GamesTemplate = ({ filterItems }: GamesTemplateProps) => {
         />
 
         {loading ? (
-          <p>Loading...</p>
+          <Loading />
         ) : (
           <section>
             <Grid>

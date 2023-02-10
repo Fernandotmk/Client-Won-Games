@@ -3,8 +3,6 @@
 // @generated
 // This file was automatically generated and should not be edited.
 
-import { AnyCnameRecord } from "dns";
-
 // ====================================================
 // GraphQL query operation: QueryGames
 // ====================================================
@@ -45,7 +43,7 @@ export interface QueryGames_games_data_attributes {
   slug: string;
   cover: QueryGames_games_data_attributes_cover | null;
   developers: QueryGames_games_data_attributes_developers | null;
-  price: number | any;
+  price: number;
 }
 
 export interface QueryGames_games_data {
@@ -64,4 +62,5 @@ export interface QueryGames {
 
 export interface QueryGamesVariables {
   limit: number;
+  start?: number | null;
 }

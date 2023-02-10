@@ -4,6 +4,7 @@ import {
   InMemoryCache,
   NormalizedCacheObject
 } from '@apollo/client'
+import { QueryGames_games } from 'graphql/generated/QueryGames'
 import { useMemo } from 'react'
 
 let apolloClient: ApolloClient<NormalizedCacheObject>
@@ -14,7 +15,28 @@ function createApolloClient() {
     link: new HttpLink({
       uri: 'http://localhost:1337/graphql/'
     }),
-    cache: new InMemoryCache()
+    cache: new InMemoryCache({
+      typePolicies: {
+        Query: {
+          fields: {
+            games: {
+              // Don't cache separate results based on
+              // any of this field's arguments.
+              keyArgs: false,
+
+              // Concatenate the incoming list items with
+              // the existing list items.
+              merge(existing: QueryGames_games, incoming: QueryGames_games) {
+                return {
+                  ...incoming,
+                  data: [...(existing?.data ?? []), ...(incoming.data ?? [])]
+                }
+              }
+            }
+          }
+        }
+      }
+    })
   })
 }
 

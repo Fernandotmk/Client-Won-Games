@@ -18,26 +18,25 @@ export type GamesTemplateProps = {
 const GamesTemplate = ({ filterItems }: GamesTemplateProps) => {
   // utilizando o useQUery do Apollo, para trazer mais
   // games sem precisar dar refresh na tela toda
-  const { data, loading } = useQuery<QueryGames, QueryGamesVariables>(
-    QUERY_GAMES,
-    { variables: { limit: 15 } }
-  )
+  const { data, loading, fetchMore } = useQuery<
+    QueryGames,
+    QueryGamesVariables
+  >(QUERY_GAMES, { variables: { limit: 15 } })
 
   const handleFilter = () => {
     return
   }
 
   const handleShowMore = () => {
-    return
+    fetchMore({
+      variables: { limit: 15, start: data?.games?.data.length }
+    })
   }
 
   return (
     <Base>
       <S.Main>
-        <ExploreSidebar
-          items={filterItems}
-          onFilter={() => console.log('Filter')}
-        />
+        <ExploreSidebar items={filterItems} onFilter={handleFilter} />
 
         {loading ? (
           <Loading />
@@ -58,7 +57,7 @@ const GamesTemplate = ({ filterItems }: GamesTemplateProps) => {
               ))}
             </Grid>
 
-            <S.ShowMore role="button" onClick={() => console.log('Teste')}>
+            <S.ShowMore role="button" onClick={handleShowMore}>
               <p>Show More</p>
               <ArrowDown size={35} />
             </S.ShowMore>

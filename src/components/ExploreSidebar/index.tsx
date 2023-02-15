@@ -1,13 +1,14 @@
 import { useState } from 'react'
 import { Close } from '@styled-icons/material-outlined/Close'
 import { FilterList } from '@styled-icons/material-outlined/FilterList'
-
+import xor from 'lodash.xor'
 import Heading from 'components/Heading'
 import Button from 'components/Button'
 import Checkbox from 'components/Checkbox'
 import Radio from 'components/Radio'
 
 import * as S from './styles'
+import { ParsedUrlQueryInput } from 'querystring'
 
 export type ItemProps = {
   title: string
@@ -21,10 +22,8 @@ export type Field = {
   name: string
 }
 
-type Values = {
-  // bolean para check box, string para radio
-  [field: string]: boolean | string
-}
+type Values = ParsedUrlQueryInput
+
 export type ExploreSidebarProps = {
   items: ItemProps[]
   initialValues?: Values
@@ -39,10 +38,18 @@ const ExploreSidebar = ({
   const [values, setValues] = useState(initialValues)
   const [isOpen, setIsOpen] = useState(false)
 
-  const handleChange = (name: string, value: string | boolean) => {
+  const handleRadio = (name: string, value: string | boolean) => {
     //exemplo de [name]: value  ->> windows: true
     // s são os valores que já tem no Values, no caso começa vazio
     setValues((s) => ({ ...s, [name]: value }))
+  }
+
+  // []
+  // ['windows']
+  // ['windows', 'linux']
+  const handleCheckBox = (name: string, value: string) => {
+    const currentList = (values[name] as []) || []
+    setValues((s) => ({ ...s, [name]: xor(currentList, [value]) }))
   }
 
   const handleFilter = () => {
@@ -72,11 +79,13 @@ const ExploreSidebar = ({
                   name={field.name}
                   labelFor={field.name}
                   label={field.label}
-                  // no test.tsx o field.name é o windows, e o valor dele é true
-                  // com isso deixara checkado o windows
-                  // values = valor / field.name = chave
-                  isChecked={!!values[field.name]}
-                  onCheck={(v) => handleChange(field.name, v)}
+                  // verificando se o campo está dentro do
+                  // field item.name , exemplo verifica se windows
+                  // está dentro de platform
+                  isChecked={(values[item.name] as string[])?.includes(
+                    field.name
+                  )}
+                  onCheck={() => handleCheckBox(item.name, field.name)}
                 />
               ))}
 
@@ -89,8 +98,11 @@ const ExploreSidebar = ({
                   name={item.name}
                   labelFor={field.name}
                   label={field.label}
-                  defaultChecked={field.name === values[item.name]}
-                  onChange={() => handleChange(item.name, field.name)}
+                  // garantindo que sempre será uma String
+                  defaultChecked={
+                    String(field.name) === String(values[item.name])
+                  }
+                  onChange={() => handleRadio(item.name, field.name)}
                 />
               ))}
           </S.Items>

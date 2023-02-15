@@ -40,6 +40,7 @@ export function initializeApollo(initialState = null) {
 
 // quando o initial State mudar [initialState] é a dependencia
 export function useApollo(initialState = null) {
+  //export function useApollo(initialState = null) {
   const store = useMemo(() => initializeApollo(initialState), [initialState])
 
   return store

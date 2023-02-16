@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Close } from '@styled-icons/material-outlined/Close'
 import { FilterList } from '@styled-icons/material-outlined/FilterList'
 import xor from 'lodash.xor'
@@ -38,6 +38,12 @@ const ExploreSidebar = ({
   const [values, setValues] = useState(initialValues)
   const [isOpen, setIsOpen] = useState(false)
 
+  // toda vez que um valor mudar ele rodará o método onFilter
+  useEffect(() => {
+    onFilter(values)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [values])
+
   const handleRadio = (name: string, value: string | boolean) => {
     //exemplo de [name]: value  ->> windows: true
     // s são os valores que já tem no Values, no caso começa vazio
@@ -47,13 +53,18 @@ const ExploreSidebar = ({
   // []
   // ['windows']
   // ['windows', 'linux']
+  // ao clicar no checkbox ele adiciona os valores
+  // sem que repita duas vezes o windows por exemplo
   const handleCheckBox = (name: string, value: string) => {
+    // pegando os values setado acima (initialValues)
     const currentList = (values[name] as []) || []
+    // utilizando o metodo xor da biblioteca lodash para adicionar
+    // os novos valores sem repiti-los
+    // começa espalhando os valores antigos ...s
     setValues((s) => ({ ...s, [name]: xor(currentList, [value]) }))
   }
 
-  const handleFilter = () => {
-    onFilter(values)
+  const handleFilterMenu = () => {
     setIsOpen(false)
   }
 
@@ -110,7 +121,7 @@ const ExploreSidebar = ({
       </S.Content>
 
       <S.Footer>
-        <Button fullWidth size="medium" onClick={handleFilter}>
+        <Button fullWidth size="medium" onClick={handleFilterMenu}>
           Filter
         </Button>
       </S.Footer>

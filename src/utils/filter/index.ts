@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { ItemProps } from 'components/ExploreSidebar'
+import { GameFiltersInput } from 'graphql/generated/globalTypes'
 import { ParsedUrlQueryInput } from 'querystring'
 
 type ParseArgs = {
@@ -12,23 +13,32 @@ export const parseQueryStringToWhere = ({
   filterItems
 }: ParseArgs) => {
   // objeto vazio
-  const obj: any = {}
+  const obj: GameFiltersInput = {}
 
   // pegando as chaves e valores vindos da queryString
   Object.keys(queryString)
     .filter((item) => item !== 'sort')
     .forEach((key) => {
-      //pegando o item que for igual a key
-      const item = filterItems?.find((item) => item.name === key)
-      //verificando o tipo do item, se é checkbox ou radio
-      const isCheckbox = item?.type === 'checkbox'
+      key === 'price' && (obj.price = Object({ lte: Number(queryString[key]) }))
 
-      // inserindo dentro do objeto vazio os valores recebidos
-      obj[key] = !isCheckbox
+      const queryStringVetor = Array.isArray(queryString[key])
         ? queryString[key]
-        : { name_contains: queryString[key] }
-    })
+        : [queryString[key]]
 
+      key === 'categories' &&
+        (<[]>queryStringVetor).map((value: string) => {
+          obj.and?.length
+            ? obj.and?.push({ categories: { name: { containsi: value } } })
+            : (obj.and = [{ categories: { name: { containsi: value } } }])
+        })
+
+      key === 'platforms' &&
+        (<[]>queryStringVetor).map((value: string) => {
+          obj.and?.length
+            ? obj.and?.push({ platforms: { name: { containsi: value } } })
+            : (obj.and = [{ platforms: { name: { containsi: value } } }])
+        })
+    })
   return obj
 }
 

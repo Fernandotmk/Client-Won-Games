@@ -18,6 +18,13 @@ export const GameFragment = gql`
         }
       }
     }
+    categories {
+      data {
+        attributes {
+          name
+        }
+      }
+    }
     price
   }
 `

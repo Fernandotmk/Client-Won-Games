@@ -3,6 +3,8 @@
 // @generated
 // This file was automatically generated and should not be edited.
 
+import { GameFiltersInput } from "./globalTypes";
+
 // ====================================================
 // GraphQL query operation: QueryGames
 // ====================================================
@@ -37,12 +39,28 @@ export interface QueryGames_games_data_attributes_developers {
   data: QueryGames_games_data_attributes_developers_data[];
 }
 
+export interface QueryGames_games_data_attributes_categories_data_attributes {
+  __typename: "Category";
+  name: string;
+}
+
+export interface QueryGames_games_data_attributes_categories_data {
+  __typename: "CategoryEntity";
+  attributes: QueryGames_games_data_attributes_categories_data_attributes | null;
+}
+
+export interface QueryGames_games_data_attributes_categories {
+  __typename: "CategoryRelationResponseCollection";
+  data: QueryGames_games_data_attributes_categories_data[];
+}
+
 export interface QueryGames_games_data_attributes {
   __typename: "Game";
   name: string;
   slug: string;
   cover: QueryGames_games_data_attributes_cover | null;
   developers: QueryGames_games_data_attributes_developers | null;
+  categories: QueryGames_games_data_attributes_categories | null;
   price: number;
 }
 
@@ -63,4 +81,6 @@ export interface QueryGames {
 export interface QueryGamesVariables {
   limit: number;
   start?: number | null;
+  filters?: GameFiltersInput | null;
+  sort?: (string | null)[] | null;
 }

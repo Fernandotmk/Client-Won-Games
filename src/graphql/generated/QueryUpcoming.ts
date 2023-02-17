@@ -39,12 +39,28 @@ export interface QueryUpcoming_upcomingGames_data_attributes_developers {
   data: QueryUpcoming_upcomingGames_data_attributes_developers_data[];
 }
 
+export interface QueryUpcoming_upcomingGames_data_attributes_categories_data_attributes {
+  __typename: "Category";
+  name: string;
+}
+
+export interface QueryUpcoming_upcomingGames_data_attributes_categories_data {
+  __typename: "CategoryEntity";
+  attributes: QueryUpcoming_upcomingGames_data_attributes_categories_data_attributes | null;
+}
+
+export interface QueryUpcoming_upcomingGames_data_attributes_categories {
+  __typename: "CategoryRelationResponseCollection";
+  data: QueryUpcoming_upcomingGames_data_attributes_categories_data[];
+}
+
 export interface QueryUpcoming_upcomingGames_data_attributes {
   __typename: "Game";
   name: string;
   slug: string;
   cover: QueryUpcoming_upcomingGames_data_attributes_cover | null;
   developers: QueryUpcoming_upcomingGames_data_attributes_developers | null;
+  categories: QueryUpcoming_upcomingGames_data_attributes_categories | null;
   price: number;
 }
 

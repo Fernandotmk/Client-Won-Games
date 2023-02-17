@@ -8,6 +8,8 @@ import { QueryGames_games } from 'graphql/generated/QueryGames'
 import { useMemo } from 'react'
 import apolloCache from './apolloCache'
 
+// remover o null para nao vir com o cache salvo
+// let apolloClient: ApolloClient<NormalizedCacheObject >
 let apolloClient: ApolloClient<NormalizedCacheObject | null>
 
 function createApolloClient() {

@@ -73,7 +73,7 @@ const GamesTemplate = ({ filterItems }: GamesTemplateProps) => {
                         game.attributes!.developers!.data[0].attributes!.name
                       }
                       img={`http://localhost:1337${game.attributes?.cover?.data?.attributes?.url}`}
-                      price={game.attributes?.price}
+                      price={game.attributes!.price}
                     />
                   ))}
                 </Grid>

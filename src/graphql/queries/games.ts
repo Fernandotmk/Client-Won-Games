@@ -15,6 +15,7 @@ export const QUERY_GAMES = gql`
       sort: $sort
     ) {
       data {
+        id
         attributes {
           ...GameFragment
         }
@@ -33,6 +34,7 @@ export const QUERY_GAME_BY_SLUG = gql`
   query QueryGamesBySlug($slug: String!) {
     games(filters: { slug: { eq: $slug } }) {
       data {
+        id
         attributes {
           name
           short_description

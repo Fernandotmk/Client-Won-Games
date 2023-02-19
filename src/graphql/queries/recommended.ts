@@ -14,6 +14,7 @@ export const QUERY_RECOMMENDED = gql`
             }
             games {
               data {
+                id
                 attributes {
                   ...GameFragment
                 }

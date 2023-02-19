@@ -97,7 +97,7 @@ describe('<TextField />', () => {
   it('Is accessible by tab', () => {
     renderWithTheme(<TextField label="TextField" name="TextField" />)
 
-    const input = screen.getByLabelText('TextField')
+    screen.getByLabelText('TextField')
     expect(document.body).toHaveFocus()
 
     userEvent.tab()
@@ -107,7 +107,7 @@ describe('<TextField />', () => {
   it('Is not accessible by tab when disabled', () => {
     renderWithTheme(<TextField label="TextField" name="TextField" disabled />)
 
-    const input = screen.getByLabelText('TextField')
+    screen.getByLabelText('TextField')
     expect(document.body).toHaveFocus()
 
     userEvent.tab()

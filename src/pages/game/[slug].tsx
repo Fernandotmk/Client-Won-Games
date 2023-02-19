@@ -45,9 +45,14 @@ export async function getStaticPaths() {
     params: { slug: attributes!.slug }
   }))
 
+  // fallback é utilizado para que o sistema
+  // encontre mais opções além das 6 limitadas acima
+  // então ele vai até o Banco de Dados e procura a
+  // informação, assim gera a(s) nova(s) páginas
   return { paths, fallback: true }
 }
 
+// Aqui começa a busca dos dados da página
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   // Get game Data
   const { data } = await apolloClient.query<
@@ -58,6 +63,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     variables: { slug: `${params?.slug}` }
   })
 
+  // se nao houver dados retorna o notFound como true
   if (!data.games?.data.length) {
     return { notFound: true }
   }
@@ -83,8 +89,8 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   const up = upcoming.showcase?.data?.attributes?.upcomingGames
 
   return {
+    revalidate: 60,
     props: {
-      revalidate: 60,
       cover: `http://localhost:1337${game!.cover?.data!.attributes!.src}`,
       gameInfo: {
         title: game.name,

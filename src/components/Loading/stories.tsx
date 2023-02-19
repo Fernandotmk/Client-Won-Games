@@ -6,7 +6,7 @@ export default {
   component: Loading
 } as ComponentMeta<typeof Loading>
 
-export const Template: ComponentStory<typeof Loading> = (args) => <Loading />
+export const Template: ComponentStory<typeof Loading> = () => <Loading />
 
 // Caso precise clonar
 // export const Basic = Template.bind({})

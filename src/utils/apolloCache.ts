@@ -1,5 +1,4 @@
 import { InMemoryCache } from '@apollo/client'
-import { concatPagination } from '@apollo/client/utilities'
 import { QueryGames_games } from 'graphql/generated/QueryGames'
 
 export default new InMemoryCache({

@@ -29,6 +29,15 @@ export const gamesMock = {
                   }
                 ]
               },
+              categories: {
+                data: [
+                  {
+                    attributes: {
+                      name: 'action'
+                    }
+                  }
+                ]
+              },
               cover: {
                 data: {
                   attributes: {
@@ -65,6 +74,15 @@ export const fetchMoreMock = {
                   {
                     attributes: {
                       name: 'sample developer'
+                    }
+                  }
+                ]
+              },
+              categories: {
+                data: [
+                  {
+                    attributes: {
+                      name: 'action'
                     }
                   }
                 ]

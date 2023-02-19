@@ -3,7 +3,7 @@ import Heading from 'components/Heading'
 import TextField from 'components/TextField'
 import * as S from './styles'
 
-const FormProfile = ({ ...args }) => (
+const FormProfile = () => (
   <>
     <Heading lineBottom size="small" color="black">
       My profile

@@ -8,10 +8,7 @@ type ParseArgs = {
   filterItems: Pick<ItemProps, 'type' | 'name'>[]
 }
 
-export const parseQueryStringToWhere = ({
-  queryString,
-  filterItems
-}: ParseArgs) => {
+export const parseQueryStringToWhere = ({ queryString }: ParseArgs) => {
   // objeto vazio
   const obj: GameFiltersInput = {}
 

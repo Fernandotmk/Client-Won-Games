@@ -8,7 +8,7 @@ import mockItems from './mock'
 
 describe('<Gallery />', () => {
   it('should render the heading', () => {
-    const { container } = renderWithTheme(
+    renderWithTheme(
       // slice para pegar apenas dois items do mock que tem varios
       <Gallery items={mockItems.slice(0, 2)} />
     )

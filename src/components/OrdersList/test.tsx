@@ -21,7 +21,7 @@ jest.mock('components/GameItem', () => ({
 
 describe('<OrdersList />', () => {
   it('should render the game items', () => {
-    const { container } = renderWithTheme(<OrdersList items={mock} />)
+    renderWithTheme(<OrdersList items={mock} />)
 
     expect(
       screen.getByRole('heading', { name: /my orders/i })

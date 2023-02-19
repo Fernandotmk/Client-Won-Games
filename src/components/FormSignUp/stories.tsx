@@ -6,7 +6,7 @@ export default {
   component: FormSignUp
 } as ComponentMeta<typeof FormSignUp>
 
-export const Template: ComponentStory<typeof FormSignUp> = (args) => (
+export const Template: ComponentStory<typeof FormSignUp> = () => (
   <div style={{ width: 300, margin: 'auto' }}>
     <FormSignUp />
   </div>

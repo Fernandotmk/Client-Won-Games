@@ -35,6 +35,8 @@ const Loading = () => {
     <S.Wrapper>
       <S.Loading>
         <svg
+          className="loading-svg"
+          data-icon="loading"
           width="46"
           height="31"
           viewBox="0 0 46 31"

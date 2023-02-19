@@ -26,8 +26,8 @@ export async function getStaticProps() {
   const news = sections?.data?.attributes?.newGames
 
   return {
+    //revalidate: 10,
     props: {
-      revalidate: 10,
       banners: bannerMapper(banners),
       newGamesTitle: news?.title,
       newGames: gamesMapper(newGames),

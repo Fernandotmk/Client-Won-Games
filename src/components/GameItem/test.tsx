@@ -11,7 +11,7 @@ const props = {
 
 describe('<GameItem />', () => {
   it('should render the item', () => {
-    const { container } = renderWithTheme(<GameItem {...props} />)
+    renderWithTheme(<GameItem {...props} />)
 
     expect(
       screen.getByRole('heading', { name: /Red Dead Redemption 2/i })

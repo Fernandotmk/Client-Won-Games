@@ -1,8 +1,7 @@
 import { screen } from '@testing-library/react'
 import { renderWithTheme } from 'utils/tests/helpers'
-import cardsMock from 'components/PaymentOptions/mock'
-
 import CardsList from '.'
+import cardsMock from 'components/PaymentOptions/mock'
 
 describe('<CardsList />', () => {
   it('should render the cards list', () => {
@@ -11,7 +10,7 @@ describe('<CardsList />', () => {
     // 2- seleconar o elemento a ser testado 'scren' (queries) - getByLabel...
     // 3- expect/assertion - comparação / análise (espero que renderize a logo branca)
 
-    const { container } = renderWithTheme(<CardsList cards={cardsMock} />)
+    renderWithTheme(<CardsList cards={cardsMock} />)
 
     expect(
       screen.getByRole('heading', { name: /my cards/i })

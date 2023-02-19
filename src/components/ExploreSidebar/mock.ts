@@ -1,4 +1,4 @@
-import { Field, ItemProps } from '.'
+import { ItemProps } from '.'
 
 export default [
   {

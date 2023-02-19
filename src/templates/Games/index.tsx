@@ -22,12 +22,18 @@ const GamesTemplate = ({ filterItems }: GamesTemplateProps) => {
   // utilizando o useQUery do Apollo, para trazer mais
   // games sem precisar dar refresh na tela toda
   const { data, loading, fetchMore } = useQueryGames({
+    // quando acontecer um fetchMore ele notifica
+    notifyOnNetworkStatusChange: true,
     variables: {
       limit: 15,
       filters: parseQueryStringToWhere({ queryString: query, filterItems }),
       sort: query.sort as string[] | null
     }
   })
+
+  const dataLength = data?.games?.data?.length || 0
+  const totalPagination = data?.games?.meta.pagination.total || 0
+  const hasMoreGames = dataLength < totalPagination
 
   const handleFilter = (items: ParsedUrlQueryInput) => {
     push({
@@ -55,42 +61,46 @@ const GamesTemplate = ({ filterItems }: GamesTemplateProps) => {
           onFilter={handleFilter}
         />
 
-        {loading ? (
-          // para passar no teste
-          <p>Loading...</p>
-        ) : (
-          //<Loading />
-          <section>
-            {data?.games?.data.length ? (
-              <>
-                <Grid>
-                  {data?.games?.data.map((game) => (
-                    <GameCard
-                      key={game.attributes?.slug}
-                      title={game.attributes!.name}
-                      slug={game.attributes!.slug}
-                      developer={
-                        game.attributes!.developers!.data[0].attributes!.name
-                      }
-                      img={`http://localhost:1337${game.attributes?.cover?.data?.attributes?.url}`}
-                      price={game.attributes!.price}
-                    />
-                  ))}
-                </Grid>
-
-                <S.ShowMore role="button" onClick={handleShowMore}>
-                  <p>Show More</p>
-                  <ArrowDown size={35} />
+        <section>
+          {data?.games?.data.length ? (
+            <>
+              <Grid>
+                {data?.games?.data.map((game) => (
+                  <GameCard
+                    key={game.attributes?.slug}
+                    title={game.attributes!.name}
+                    slug={game.attributes!.slug}
+                    developer={
+                      game.attributes!.developers!.data[0].attributes!.name
+                    }
+                    img={`http://localhost:1337${game.attributes?.cover?.data?.attributes?.url}`}
+                    price={game.attributes!.price}
+                  />
+                ))}
+              </Grid>
+              {hasMoreGames && (
+                <S.ShowMore>
+                  {loading ? (
+                    <S.ShowMoreLoading
+                      src="/img/dots.svg"
+                      alt="Loading more games..."
+                    ></S.ShowMoreLoading>
+                  ) : (
+                    <S.ShowMoreButton role="button" onClick={handleShowMore}>
+                      <p>Show More</p>
+                      <ArrowDown size={35} />
+                    </S.ShowMoreButton>
+                  )}
                 </S.ShowMore>
-              </>
-            ) : (
-              <Empty
-                title=":("
-                description="We din't find any games with this filter"
-              />
-            )}
-          </section>
-        )}
+              )}
+            </>
+          ) : (
+            <Empty
+              title=":("
+              description="We din't find any games with this filter"
+            />
+          )}
+        </section>
       </S.Main>
     </Base>
   )

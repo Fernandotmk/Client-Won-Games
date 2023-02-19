@@ -69,9 +69,20 @@ export interface QueryGames_games_data {
   attributes: QueryGames_games_data_attributes | null;
 }
 
+export interface QueryGames_games_meta_pagination {
+  __typename: "Pagination";
+  total: number;
+}
+
+export interface QueryGames_games_meta {
+  __typename: "ResponseCollectionMeta";
+  pagination: QueryGames_games_meta_pagination;
+}
+
 export interface QueryGames_games {
   __typename: "GameEntityResponseCollection";
   data: QueryGames_games_data[];
+  meta: QueryGames_games_meta;
 }
 
 export interface QueryGames {

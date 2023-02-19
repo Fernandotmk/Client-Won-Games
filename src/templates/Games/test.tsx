@@ -26,16 +26,6 @@ jest.mock('templates/Base', () => ({
 }))
 
 describe('<Games />', () => {
-  it('should render sections', () => {
-    renderWithTheme(
-      <MockedProvider mocks={[]} addTypename={false}>
-        <Games filterItems={filterItemsMock} />
-      </MockedProvider>
-    )
-
-    expect(screen.getByText(/loading.../i)).toBeInTheDocument()
-  })
-
   it('should render sections', async () => {
     renderWithTheme(
       <MockedProvider mocks={[gamesMock]} addTypename={false}>
@@ -43,8 +33,6 @@ describe('<Games />', () => {
       </MockedProvider>
     )
     // get quando tem certeza do elemento, query quando nao tem o elemento
-    expect(screen.getByText(/loading.../i)).toBeInTheDocument()
-
     // find em processos assincronos
     expect(await screen.findByText(/Price/i)).toBeInTheDocument()
 

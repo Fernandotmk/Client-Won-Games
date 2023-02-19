@@ -8,6 +8,11 @@ export const gamesMock = {
   result: {
     data: {
       games: {
+        meta: {
+          pagination: {
+            total: 10
+          }
+        },
         data: [
           {
             attributes: {

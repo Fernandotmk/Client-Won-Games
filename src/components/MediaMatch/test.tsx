@@ -10,7 +10,7 @@ describe('<MediaMatch />', () => {
   // o data-testeid foi utilizado para poder
   // selecionar mais facilmente o elemento
   // vem do testing-library/react
-
+ 
   beforeEach(() => {
     render(
       <>

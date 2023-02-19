@@ -5,7 +5,7 @@ import FormProfile from '.'
 
 describe('<FormProfile />', () => {
   it('should render the profile form', () => {
-    const { container } = renderWithTheme(<FormProfile />)
+    renderWithTheme(<FormProfile />)
 
     expect(
       screen.getByRole('heading', { name: /my profile/i })

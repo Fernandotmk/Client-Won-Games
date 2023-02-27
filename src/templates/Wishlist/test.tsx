@@ -22,7 +22,7 @@ jest.mock('components/Showcase', () => ({
 
 describe('<Wishlist />', () => {
   it('should render the heading', () => {
-    const { container } = renderWithTheme(<Wishlist {...props} />)
+    renderWithTheme(<Wishlist {...props} />)
 
     expect(
       screen.getByRole('heading', { name: /wishlist/i })

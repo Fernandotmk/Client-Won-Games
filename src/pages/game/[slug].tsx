@@ -60,7 +60,8 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     QueryGamesBySlugVariables
   >({
     query: QUERY_GAME_BY_SLUG,
-    variables: { slug: `${params?.slug}` }
+    variables: { slug: `${params?.slug}` },
+    fetchPolicy: 'no-cache' // garante que vem dado novo ao gerar estático
   })
 
   // se nao houver dados retorna o notFound como true

@@ -6,9 +6,9 @@ export default {
   component: FormProfile
 } as ComponentMeta<typeof FormProfile>
 
-export const Template: ComponentStory<typeof FormProfile> = (args) => (
+export const Template: ComponentStory<typeof FormProfile> = () => (
   <div style={{ maxWidth: 860, margin: 'auto' }}>
-    <FormProfile {...args} />
+    <FormProfile />
   </div>
 )
 

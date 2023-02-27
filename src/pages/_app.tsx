@@ -1,5 +1,5 @@
 import { ApolloProvider } from '@apollo/client'
-import type { AppProps } from 'next/app'
+import { AppProps } from 'next/dist/shared/lib/router/router'
 import Head from 'next/head'
 import { ThemeProvider } from 'styled-components'
 import theme from 'styles/theme'

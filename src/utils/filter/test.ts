@@ -9,8 +9,8 @@ const filterItems = [
 
 const queryString = {
   price: 100,
-  platforms: ['windows', 'linux'],
-  developers: 'Rockstar Games',
+  platforms: ['mac', 'windows', 'linux'],
+  categories: ['action', 'adventure', 'horror'],
   sort: 'price:asc'
 }
 
@@ -19,9 +19,51 @@ describe('parseQueryStringToWhere()', () => {
     const parsedQuery = parseQueryStringToWhere({ queryString, filterItems })
 
     expect(parsedQuery).toStrictEqual({
-      price: 100,
-      platforms: { name_contains: ['windows', 'linux'] },
-      developers: { name_contains: 'Rockstar Games' }
+      price: { lte: 100 },
+      and: [
+        {
+          platforms: {
+            name: {
+              containsi: 'mac'
+            }
+          }
+        },
+        {
+          platforms: {
+            name: {
+              containsi: 'windows'
+            }
+          }
+        },
+        {
+          platforms: {
+            name: {
+              containsi: 'linux'
+            }
+          }
+        },
+        {
+          categories: {
+            name: {
+              containsi: 'action'
+            }
+          }
+        },
+        {
+          categories: {
+            name: {
+              containsi: 'adventure'
+            }
+          }
+        },
+        {
+          categories: {
+            name: {
+              containsi: 'horror'
+            }
+          }
+        }
+      ]
     })
   })
 })
@@ -32,8 +74,8 @@ describe('parseQueryStringToFilter()', () => {
 
     expect(parsedQuery).toStrictEqual({
       price: 100,
-      platforms: ['windows', 'linux'],
-      developers: ['Rockstar Games'],
+      platforms: ['mac', 'windows', 'linux'],
+      categories: ['action', 'adventure', 'horror'],
       sort: 'price:asc'
     })
   })

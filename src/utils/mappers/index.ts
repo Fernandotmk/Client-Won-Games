@@ -4,8 +4,10 @@ import {
   QueryHome_banners,
   QueryHome_sections_data_attributes_freeGames_highlight
 } from 'graphql/generated/QueryHome'
+import { QueryRecommended_recommended_data_attributes_section_games } from 'graphql/generated/QueryRecommended'
+import { QueryUpcoming_upcomingGames } from 'graphql/generated/QueryUpcoming'
 
-export const bannerMapper = (banners: QueryHome_banners) => {
+export const bannerMapper = (banners: QueryHome_banners | null) => {
   return banners?.data.map((banner) => ({
     img: `http://localhost:1337${banner.attributes?.image.data?.attributes?.url}`,
     title: banner.attributes?.title,
@@ -31,7 +33,14 @@ export const bannerMapper = (banners: QueryHome_banners) => {
   }))
 }
 
-export const gamesMapper = (games: QueryGames_games | null) => {
+export const gamesMapper = (
+  games:
+    | QueryGames_games
+    | QueryUpcoming_upcomingGames
+    | QueryRecommended_recommended_data_attributes_section_games
+    | null
+    | undefined
+) => {
   return games
     ? games?.data.map((game) => ({
         id: game.id,
@@ -47,7 +56,10 @@ export const gamesMapper = (games: QueryGames_games | null) => {
 }
 
 export const highlightMapper = (
-  highlight: QueryHome_sections_data_attributes_freeGames_highlight | null
+  highlight:
+    | QueryHome_sections_data_attributes_freeGames_highlight
+    | undefined
+    | null
 ) => {
   return highlight
     ? {

@@ -29,4 +29,21 @@ describe('<Dropdown />', () => {
     expect(content).toHaveStyle({ opacity: 1 })
     expect(content.getAttribute('aria-hidden')).toBe('false')
   })
+
+  it('should handle open/close when click on overlay', () => {
+    const content = screen.getByText(/content/).parentElement!
+    // overlay é o proximo elemento depois do content
+    const overlay = content.nextElementSibling
+
+    fireEvent.click(screen.getByLabelText(/toogle dropdown/))
+
+    // o exclamação ! é uma forma de dizer e garantir
+    // que o elemento existe
+    expect(overlay).toHaveStyle({ opacity: 1 })
+    expect(overlay!.getAttribute('aria-hidden')).toBe('false')
+
+    fireEvent.click(overlay!)
+    expect(overlay).toHaveStyle({ opacity: 0 })
+    expect(overlay!.getAttribute('aria-hidden')).toBe('true')
+  })
 })

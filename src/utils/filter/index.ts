@@ -11,7 +11,6 @@ type ParseArgs = {
 export const parseQueryStringToWhere = ({ queryString }: ParseArgs) => {
   // objeto vazio
   const obj: GameFiltersInput = {}
-
   // pegando as chaves e valores vindos da queryString
   Object.keys(queryString)
     .filter((item) => item !== 'sort')
